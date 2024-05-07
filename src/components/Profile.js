@@ -21,7 +21,19 @@ const Profile = () => {
   }, []);
 
   if (!profileData) return <div>Loading...</div>;
-    return (  );
+    return ( 
+        <div>
+      <h1>{profileData.username}</h1>
+      <img src={profileData.profilePicture} alt="Profile Picture" />
+      <ul>
+        {profileData.topTracks.map((track, index) => (
+          <li key={index}>{track.name} - {track.artist}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+     );
 }
  
 export default Profile;
