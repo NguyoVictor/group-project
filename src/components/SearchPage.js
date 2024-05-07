@@ -20,5 +20,14 @@ const SearchPage = () => {
             'useQueryString': true
         }
     })
+    
+    .then(response => {
+        // Check if the response status is ok
+        if(!response.ok) {
+            throw new Error('Network responese was not ok');
+        }
+        // Parse the JSON data from the response
+        return response.json();
+    })
  }
 }
