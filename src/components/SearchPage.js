@@ -38,4 +38,20 @@ const SearchPage = () => {
         console.error('Error searching:', error);
     });
  };
+
+ return (
+    <div>
+        {/* Heading for the search page */}
+        <h1>Search Page</h1>
+        {/* Form to enter the search query */}
+        <form onSubmit={handleSearch}>
+            <input 
+            type="text"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Search for artists, albums, tracks..."
+            />
+        </form>
+    </div>
+ )
 }
