@@ -51,6 +51,7 @@ const SearchPage = () => {
             onChange={e => setQuery(e.target.value)}
             placeholder="Search for artists, albums, tracks..."
             />
+            <button type="submit">Search</button>
         </form>
     </div>
  )
