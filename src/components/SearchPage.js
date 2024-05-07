@@ -29,5 +29,13 @@ const SearchPage = () => {
         // Parse the JSON data from the response
         return response.json();
     })
- }
+    .then(data => {
+        // Update the state with the search results
+        setSearchResults(data);
+    })
+    .catch(error => {
+        // Handle any errors that occur during the fetch operation
+        console.error('Error searching:', error);
+    });
+ };
 }
