@@ -7,7 +7,7 @@ const Profile = () => {
     <h1>Your Profile</h1>
     <div className='user-register'>
     <label>Name</label>
-    <input type='text' placeholder='Name' />
+    <input type='text' placeholder='enter your name' />
     </div>
     </div>
    );
