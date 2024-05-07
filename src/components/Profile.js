@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import './Profile.module.css';
 
 
 const Profile = () => {
+  const [passwordVisible,setPasswordVisible] = useState(false);
   return ( 
     <div>
     <h1>Your Profile</h1>
@@ -11,11 +13,11 @@ const Profile = () => {
     </div>
     <div className='user-email'>
     <label>Email</label>
-    <input type='text' placeholder='enter your email' />
+    <input type={passwordVisible? 'text':'password'} placeholder='enter your email' />
     </div>
     <div className='user-password'>
     <label>Password</label>
-    <input type='text' placeholder='enter your password' />
+    <input type='password' placeholder='enter your password' />
     </div>
     </div>
    );
