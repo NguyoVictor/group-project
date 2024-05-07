@@ -19,6 +19,8 @@ const Profile = () => {
 
     fetchData();
   }, []);
+
+  if (!profileData) return <div>Loading...</div>;
     return (  );
 }
  
