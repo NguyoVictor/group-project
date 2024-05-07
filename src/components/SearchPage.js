@@ -4,4 +4,6 @@ import React, { useState } from "react";
 const SearchPage = () => {
  // State to manage the search query
  const [query, setQuery] = useState('');
+ // State to store the search results from API
+ const [searchResults, setSearchResults] = useState('');
 }
