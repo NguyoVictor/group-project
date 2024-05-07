@@ -2,35 +2,49 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Profile = () => {
-  // Initialize state for profile data
-  const [profileData, setProfileData] = useState(null);
+  const [profileData, setProfileData] = useState({
+    loading: true,
+    error: null,
+    data: null,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://spotify23.p.rapidapi.com/user_profile/', {
+        const response = await axios.get('https://spotify23.p.rapidapi.com/user_profile', {
           headers: {
-            'X-RapidAPI-Key': '92bf5002a5msh5b2d9c21719e1dep1e3e1',
+            'X-RapidAPI-Key': 'd65d099f81mshfb46b6e8c0d8ddfp16ee3bjsnc801f6cbf524', 
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
           }
         });
-        setProfileData(response.data);
+        console.log(response.data); // Log the response data for inspection
+        setProfileData({
+          loading: false,
+          error: null,
+          data: response.data,
+        });
       } catch (error) {
         console.error('Error fetching data:', error);
+        setProfileData({
+          loading: false,
+          error: true,
+          data: null,
+        });
       }
     };
 
     fetchData();
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []);
 
-  if (!profileData) return <div>Loading...</div>;
+  if (profileData.loading) return <div>Loading...</div>;
+  if (profileData.error) return <div>Error: {profileData.data?.message || 'An unknown error occurred.'}</div>;
 
   return (
     <div>
-      <h1>{profileData.username}</h1>
-      <img src={profileData.profilePicture} alt="music" />
+      <h1>{profileData.data?.username}</h1>
+      <img src={profileData.data?.profilePicture} alt="music" />
       <ul>
-        {profileData.topTracks.map((track, index) => (
+        {profileData.data?.topTracks.map((track, index) => (
           <li key={index}>{track.name} - {track.artist}</li>
         ))}
       </ul>
