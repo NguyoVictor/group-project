@@ -7,7 +7,7 @@ const Profile = () => {
       try {
         const response = await axios.get('https://spotify23.p.rapidapi.com/user_profile/', {
           headers: {
-            'X-RapidAPI-Key': 'YOUR_RAPIDAPI_KEY',
+            'X-RapidAPI-Key': '92bf5002a5msh5b2d9c21719e1dep1e3e1',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
           }
         });
