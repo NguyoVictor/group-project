@@ -21,8 +21,9 @@ const Profile = () => {
   }, []);
 
   if (!profileData) return <div>Loading...</div>;
-    return ( 
-        <div>
+
+  return (
+    <div>
       <h1>{profileData.username}</h1>
       <img src={profileData.profilePicture} alt="Profile Picture" />
       <ul>
@@ -33,7 +34,6 @@ const Profile = () => {
     </div>
   );
 };
-     );
-}
- 
+
 export default Profile;
+
