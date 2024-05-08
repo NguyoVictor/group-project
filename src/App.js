@@ -1,5 +1,6 @@
  
  import { BrowserRouter,Routes,Route } from "react-router-dom"
+ import './App.css';
  import Home from "./Pages/Home"
  import Search from "./Pages/Search"
  import Library from "./Pages/Library"
@@ -9,7 +10,7 @@
  
  export default function App(){
   return (
-    <div>
+    <div className="container">
 <BrowserRouter>
 <Routes>
   <Route index element={<Home/>}/>  

@@ -1,8 +1,8 @@
 function Header(){
     return(
-    
-            <h1>LIVE LOVE MUSIC</h1>
-
+    <div id="header"> 
+         <h1>LIVE LOVE MUSIC</h1>
+            </div>
     );
 }
 export default Header

@@ -1,17 +1,15 @@
+.container{
+color: #5db434;
+background-color: black;
+height: 1000px;
+text-align: center;
+}
+.library{
+  background-color: black;
+  
+}
+#header{
+  color: #8fdd45;
 
-.container {
-  align-items: flex-start;  
-  justify-content: flex-start; 
-  min-height: 1000vh;
-  background-color: #000000;
-  font-family: 'Poppins', sans-serif;
-  color: rgb(73, 201, 41);
-  padding: 10px;
-  font-size: 20px;
 }
-.NavBar{
-  background-color: #cab34b;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  align-items: center;
-}
+
