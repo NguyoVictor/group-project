@@ -17,7 +17,7 @@ useEffect(() => { // introduced use effect hook
     }
     };
     try { // introduced try and catch 
-        const response = await fetch(recommendedTracksEndpoint, options);
+        const response = await fetch(recommendedTracksUrl, options);
         const data = await response.json();
         // Extract relevant information from the response
         const tracks = data.tracks.map(track => ({
@@ -45,35 +45,35 @@ setCurrentTrack(null);
 setCurrentTrack(previewUrl);
 }
 };
-<div> 
-<h2>Discover Recommended Tracks</h2>
-{loading ? ( ////used loading to enable user the parameters when the site is loading
-<p>Loading...</p>
-) : (
-<ul>{recommendedTracks.map((track, index) => ( // iterate over tracks giving the track index
-<li key={index}>
-{track.cover_url && (
-<img
-src={track.cover_url}
-alt={`${track.name} cover`}
-onClick={() => handlePlayTrack(track.preview_url)}
-style={{ cursor: 'pointer' }}
-/>
-)}
-<strong>{track.name}</strong> by {track.artist} from the album {track.album}
-{currentTrack === track.preview_url && (
-<audio controls autoPlay>
-<source src={track.preview_url} type="audio/mpeg" />
-Your browser does not support the audio element.
-</audio>
-)}
-</li>
-))}
-</ul>
-)}
-</div>
+return (
+    <div>
+        <h2>Discover Recommended Tracks</h2>
+        {loading ? (
+            <p>Loading...</p>
+        ) : (
+            <ul>
+       {recommendedTracks.map((track, index) => (//iterate over the tracks
+             <li key={index}>
+                 {track.cover_url && (
+                       <img
+                 src={track.cover_url}
+                   alt={`${track.name} cover`}
+                    onClick={() => handlePlayTrack(track.preview_url)}
+                 style={{ cursor: 'pointer' }}
+                            />// used audio to basic playback controls
+           )}
+              <strong>{track.name}</strong> by {track.artist} from the album {track.album}
+           {currentTrack === track.preview_url && (
+         <audio controls autoPlay>
+             <source src={track.preview_url} type="audio/mpeg" />
+              </audio>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        )}
+    </div>
 );
 };
 
 export default RecommendedTracks;
-
