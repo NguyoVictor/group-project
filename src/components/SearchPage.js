@@ -11,8 +11,7 @@ const SearchPage = () => {
  const API_KEY = 'd65d099f81mshfb46b6e8c0d8ddfp16ee3bjsnc801f6cbf524';
 
  // Function to handle the search operation
- const handleSearch = (event) => {
-    event.preventDefault();
+ const handleSearch = () => {
     setLoading(true);
     // Make a GET request to the API using fetch
     fetch(`https://spotify23.p.rapidapi.com/search?q=${encodeURIComponent(query)}&type=track`, {
@@ -49,18 +48,46 @@ const SearchPage = () => {
 console.log('Search Results:', searchResults);
  
 return (
-    <div className="music-result" style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Times New Roman, serif' }}>
+    <div className="music-result" 
+    style={{ 
+        maxWidth: '800px', 
+        margin: '0 auto', 
+        padding: '20px', 
+        fontFamily: 'Times New Roman, serif' }}>
+
         {/* Heading for the search page */}
-        <h1 style={{ marginBottom: '20px', textAlign: 'center' }}>Search Page</h1>
+        <h1 style={{ marginBottom: '20px', textAlign: 'center' }}>SEARCH</h1>
         {/* Form to enter the search query */}
-        <form onSubmit={handleSearch} style={{ marginBottom: '20px'}}>
+        <form onSubmit={handleSearch}>
             <input 
             type="text"
             value={query}
-            onChange={e => setQuery(e.target.value)}
-            placeholder="Search for artists, albums, tracks..."
+            onChange={(e) => {
+                setQuery(e.target.value);
+                handleSearch();
+            }}
+            placeholder="What do you want to play?"
+            style={{
+            display: 'flex',
+            alignItems: 'center',
+            backgroundColor: '#fff',
+            borderRadius: '5px',
+            padding: '10px',
+            width: 'calc(100% - 20px)',
+            border: '1px solid #ccc',
+            margin: '10px auto'
+        }}
             />
-            <button type="submit">Search</button>
+            <button 
+            type="submit"
+            style={{
+               backgroundColor: '#fff',
+               border: '1px solid #ccc',
+               borderRadius: '50%',
+               width: '30px',
+               height: '30px',
+               cursor: 'ponter' 
+            }}>🔍</button>
         </form>
         {loading && <p>Loading...</p>}
          {/* Display search results */}
