@@ -49,11 +49,11 @@ const SearchPage = () => {
 console.log('Search Results:', searchResults);
  
 return (
-    <div className="music-result" style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
+    <div className="music-result" style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Times New Roman, serif' }}>
         {/* Heading for the search page */}
-        <h1>Search Page</h1>
+        <h1 style={{ marginBottom: '20px', textAlign: 'center' }}>Search Page</h1>
         {/* Form to enter the search query */}
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} style={{ marginBottom: '20px'}}>
             <input 
             type="text"
             value={query}
