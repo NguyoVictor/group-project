@@ -32,7 +32,18 @@ const RecommendedTracks = () => {
           cover_url: track.album.images.length > 0 ? track.album.images[0].url : null
         }));
         
-      
+        setRecommendedTracks(tracks);//update recommended tracks
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching recommended tracks:', error);
+      }
+    };
+
+    fetchRecommendedTracks();
+  }, []);
+
+  
+
   return (
     <div>
       <h2>Recommended Tracks</h2>
