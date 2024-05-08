@@ -8,13 +8,14 @@ const SearchPage = () => {
  const [searchResults, setSearchResults] = useState([]);
  const [loading, setLoading] = useState(false);
  // API key obtained
- const API_KEY = 'd65d099f81mshfb46b6e8c0d8ddfp16ee3bjsnc801f6cbf524';
+ const API_KEY = '1c895a3985msh2ff25eae52fb2fdp12eabajsn4bb7f20785a2';
 
  // Function to handle the search operation
- const handleSearch = () => {
+ const handleSearch = (event) => {
+    // event.preventDefault();
     setLoading(true);
     // Make a GET request to the API using fetch
-    fetch(`https://spotify23.p.rapidapi.com/search?q=${encodeURIComponent(query)}&type=track`, {
+    fetch(`https://spotify23.p.rapidapi.com/search?q=${encodeURIComponent(query)}&type=track&limit=100`, {
         method: 'GET',
         headers: {
             'x-rapidapi-key': API_KEY,
@@ -62,8 +63,8 @@ return (
             <input 
             type="text"
             value={query}
-            onChange={(e) => {
-                setQuery(e.target.value);
+            onChange={(event) => {
+                setQuery(event.target.value);
                 handleSearch();
             }}
             placeholder="What do you want to play?"
