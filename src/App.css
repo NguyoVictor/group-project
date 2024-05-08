@@ -4,21 +4,54 @@ background-color: rgb(0, 0, 0);
 height: 1000px;
 text-align: center;
 }
-.library{
-color: #8fdd45;
-  
+
+#header  {
+  position: absolute; 
+  top: 0; 
+  animation: move-text 30s linear infinite; 
+  padding: 80px;
+  text-align: center;
+  align-items: center;
 }
-#header{
-  color: #8fdd45;
+
+@keyframes move-text {
+  from { transform: translateX(50px); } 
+  to { transform: translateX(100%); }
 }
+
 .NavBar{
-  display: flex;  
+  display: flex;
   justify-content: space-between;
-  background-color: rgb(0, 0, 0);
+  justify-content: space-between;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-style: italic;
   text-align: left;
-
 }
-
+.NavBar button{
+  display: flex;
+color: rgb(119, 241, 70);
+background-color: #21271e;
+border-radius: 100px;
+border-color: #334225;
+margin:0 120px;
+}
+.NavBar nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.form ::placeholder{
+  background-color:black;
+  border-radius: 10px;
+  border-color: black;
+  color: rgb(137, 218, 16);
+  padding: 12px;
+}
+.form button{
+  background-color:gray;
+  border-radius: 10px;
+  border-color: black;
+  color: rgb(137, 218, 16);
+ 
+}

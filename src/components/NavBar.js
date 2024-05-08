@@ -5,14 +5,14 @@ class Navbar extends React.Component {
     return (
         <div className='NavBar'>
       <nav>
-        <ul>
-          <li><a href="./Home"><button>Home</button></a></li>
-          <li><a href="./Search"><button>Search</button></a></li>
-          <li><a href="./Library"><button>Library</button></a></li>
-          <li><a href="./Profile"><button>Profile</button></a></li>
-          <li><a href="./Discover"><button>Discover </button></a></li>
-          <li><a href="./Podcast"><button>Podcast</button></a></li>
-        </ul>
+      
+          <a href="./Home"><button>Home</button></a>
+          <a href="./Search"><button>Search</button></a>
+          <a href="./Library"><button>Library</button></a>
+          <a href="./Profile"><button>Profile</button></a>
+          <a href="./Discover"><button>Discover </button></a>
+          <a href="./Podcast"><button>Podcast</button></a>
+      
       </nav>
       </div>
     );

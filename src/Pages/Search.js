@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavBar from '../components/NavBar'
+import Header from '../components/Header'
 // Function for the SearchPage
 const SearchPage = () => {
  // State to manage the search query
@@ -12,6 +13,7 @@ const SearchPage = () => {
 
  // Function to handle the search operation
  const handleSearch = (event) => {
+
     event.preventDefault();
     setLoading(true);
     // Make a GET request to the API using fetch
@@ -49,12 +51,17 @@ const SearchPage = () => {
 console.log('Search Results:', searchResults);
  
 return (
-    <div className="music-result" style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Times New Roman, serif' }}>
+    
+    <div className="music-result" style={{ maxWidth: '6000px',maxHeight: '100px', padding: '10px', fontFamily: 'Times New Roman, serif' }}>
+          <NavBar/> 
+         
         {/* Heading for the search page */}
-        <NavBar/>
-        <h1 style={{ marginBottom: '20px', textAlign: 'center' }}>Search Page</h1>
-        {/* Form to enter the search query */}
-        <form onSubmit={handleSearch} style={{ marginBottom: '20px'}}>
+        <Header/>
+        <h3 style={{ marginBottom: '60px', textAlign: 'center' }}>Search Page</h3>
+      
+      {/* Form to enter the search query */}
+    <div className="form">
+     <form onSubmit={handleSearch} style={{ marginBottom: '100px'}}>
             <input 
             type="text"
             value={query}
@@ -63,13 +70,16 @@ return (
             />
             <button type="submit">Search</button>
         </form>
+        </div>
         {loading && <p>Loading...</p>}
          {/* Display search results */}
-        <div className="music-card" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
+         <div className="music-card" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(225px, 1fr))', gridAutoRows: 'minmax(10px, auto)', gap: '30px' }}>
+  
+
         {/* Iterate over the search results and render each result */}
         {searchResults.length > 0 ? (
          searchResults.map((result, index) => (
-            <div key={index} style={{ backgroundColor: '#f9f9f9', padding: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'}}>
+            <div key={index} style={{ backgroundColor: '#f9f9f9', padding: '9px', borderRadius: '3px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'}}>
                 {/* Render each search result */}
                 <img src={result.data.albumOfTrack.coverArt.sources[0].url} alt="Album Cover" style={{ width: '100%', height: 'auto' }} />
                 <p style={{ margin: '5px 0' }}>Name: {result.data.name}</p>
@@ -78,11 +88,10 @@ return (
             </div>
         )) 
     ):(
-        <p>No results found</p>
+        <p></p>
     )}
      </div>
     </div>
-    
    );
 };
 

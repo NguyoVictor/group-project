@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavBar from '../components/NavBar'
 import './Profile.module.css';
 
 const Profile = () => {
@@ -19,6 +20,7 @@ setFormType(e.target.value);
 
 return (
 <div>
+<NavBar/>
 <h2>{formType === 'login'? 'User Login ' : 'User Signup '}</h2>
 <div className="imgcontainer">
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkGCTYaq8nlLXM3bauSTaJOKGvty6MYYYEk5UEA4Nj_w&s" alt="user" className="user" />
