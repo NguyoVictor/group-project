@@ -16,3 +16,20 @@ useEffect(() => { // introduced use effect hook
     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
     };
+    try { // introduced try and catch 
+        const response = await fetch(recommendedTracksEndpoint, options);
+        const data = await response.json();
+        // Extract relevant information from the response
+        const tracks = data.tracks.map(track => ({
+        name: track.name,
+        artist: track.artists.map(artist => artist.name).join(', '),
+        album: track.album.name,
+        preview_url: track.preview_url,
+        cover_url: track.album.images.length > 0 ? track.album.images[0].url : null
+        }));
+        setRecommendedTracks(tracks);
+        setLoading(false);
+        } catch (error) {
+        console.error('Error fetching recommended tracks:', error);
+        }
+        
