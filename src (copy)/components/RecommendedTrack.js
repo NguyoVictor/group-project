@@ -50,4 +50,30 @@ setCurrentTrack(previewUrl);
 {loading ? ( ////used loading to enable user the parameters when the site is loading
 <p>Loading...</p>
 ) : (
-<ul></ul>
+<ul>{recommendedTracks.map((track, index) => ( // iterate over tracks giving the track index
+<li key={index}>
+{track.cover_url && (
+<img
+src={track.cover_url}
+alt={`${track.name} cover`}
+onClick={() => handlePlayTrack(track.preview_url)}
+style={{ cursor: 'pointer' }}
+/>
+)}
+<strong>{track.name}</strong> by {track.artist} from the album {track.album}
+{currentTrack === track.preview_url && (
+<audio controls autoPlay>
+<source src={track.preview_url} type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+)}
+</li>
+))}
+</ul>
+)}
+</div>
+);
+};
+
+export default RecommendedTracks;
+
