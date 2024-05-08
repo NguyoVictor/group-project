@@ -45,3 +45,9 @@ setCurrentTrack(null);
 setCurrentTrack(previewUrl);
 }
 };
+<div> 
+<h2>Discover Recommended Tracks</h2>
+{loading ? ( ////used loading to enable user the parameters when the site is loading
+<p>Loading...</p>
+) : (
+<ul></ul>
