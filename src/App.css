@@ -27,6 +27,7 @@ text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-style: italic;
   text-align: left;
+  padding: 0px ;
 }
 .NavBar button{
   display: flex;
@@ -35,6 +36,7 @@ background-color: #21271e;
 border-radius: 100px;
 border-color: #334225;
 margin:0 120px;
+
 }
 .NavBar nav{
   display: flex;
@@ -42,16 +44,27 @@ margin:0 120px;
   padding: 10px;
 }
 .form ::placeholder{
-  background-color:black;
-  border-radius: 10px;
-  border-color: black;
-  color: rgb(137, 218, 16);
-  padding: 12px;
+  background-color:rgb(129, 129, 129);
+  border-radius: 0px;
+ 
+  color:rgb(250, 255, 243);
+  padding-right: 20px;
+  padding: 20px;
+}
+
+.form input{
+background-color:gray;
+border-radius: 10px;
+padding-right: 20px;
+padding-left: 20px;
+
 }
 .form button{
   background-color:gray;
   border-radius: 10px;
   border-color: black;
-  color: rgb(137, 218, 16);
+  color: rgb(250, 255, 243);
+  padding-left: 10px;
+  padding-right: 10px;
  
 }
