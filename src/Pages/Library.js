@@ -1,66 +1,59 @@
-
-import React, { useState }from 'react';
-import { useEffect } from 'react';
-import Header from '../components/Header'
+import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar'
-const Library = () => {
-  const [playlists, setPlaylists] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+import Header from '../components/Header'
+import './Library.css';
+const Library= () => {
+   
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  // Function to fetch playlists
-  const fetchPlaylists = () => {
-    setLoading(true);
-    setError(null);
+    useEffect(() => {
+        const fetchPlaylists = async () => {
+            const playlistUrl = 'https://spotify23.p.rapidapi.com/playlist_tracks/?id=37i9dQZF1DX4Wsb4d7NKfP&offset=0&limit=100';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '3509af7823msha08596116c3770ap1b2ab7jsna490778b83c0',
+                    'x-rapidapi-host': 'spotify23.p.rapidapi.com'
+                }
+            };
+            try {
+                const response = await fetch(playlistUrl, options);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Received playlists:', data); // Log the received data
+                setItems(data.items || []);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching items:', error);
+                setLoading(false); // Set loading to false in case of an error
+            }
+        };
+        fetchPlaylists();
+    }, []);
 
-    fetch('https://spotify23.p.rapidapi.com/playlists', {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-key': '3509af7823msha08596116c3770ap1b2ab7jsna490778b83c0',
-        'x-rapidapi-host': 'spotify23.p.rapidapi.com',
-        'useQueryString': true
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setPlaylists(data.playlists || []);
-      })
-      .catch(error => {
-        setError(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-
-  // Call fetchPlaylists when component mounts
-  useEffect(() => {
-    fetchPlaylists();
-  }, []);
-
-  return (
-    <div className="library">
-      <Header/><NavBar/>
-            <h2>Library</h2>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      <ul>
-        {playlists.map(playlist => (
-          <li key={playlist.id}>
-            <h3>{playlist.name}</h3>
-            <p>{playlist.description}</p>
-            <p>Owner: {playlist.owner}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+        <div>
+            <NavBar/> 
+        
+            <Header/>
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <div className="playlist-container">
+                    {items.map((item, index) => (
+                        <div key={index} className="playlist-card">
+                            <h3>{item.track.name}</h3>
+                            <p>Added At: {item.added_at}</p>
+                            <p>Added By: {item.added_by.type}</p>                           
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default Library;
