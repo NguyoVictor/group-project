@@ -8,7 +8,7 @@ const SearchPage = () => {
  const [searchResults, setSearchResults] = useState([]);
  const [loading, setLoading] = useState(false);
  // API key obtained
- const API_KEY = '1c895a3985msh2ff25eae52fb2fdp12eabajsn4bb7f20785a2';
+ const API_KEY = '3509af7823msha08596116c3770ap1b2ab7jsna490778b83c0';
 
  // Function to handle the search operation
  const handleSearch = (event) => {
