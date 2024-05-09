@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const PlaylistSection = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -16,7 +16,7 @@ const PlaylistSection = () => {
         'x-rapidapi-key': '3509af7823msha08596116c3770ap1b2ab7jsna490778b83c0',
         'x-rapidapi-host': 'spotify23.p.rapidapi.com',
       },
-        'useQueryString': true
+        'useQueryString': true,
 
     })
       .then(response => {
@@ -26,7 +26,11 @@ const PlaylistSection = () => {
         return response.json();
       })
       .then(data => {
-        setPlaylists(data.playlists || []);
+        if (data && data.playlists) {
+          setPlaylists(data.playlists);
+        }else {
+          throw new Error ('No PLaylist Found');
+        }
       })
       .catch(error => {
         setError(error.message);
@@ -54,7 +58,7 @@ const PlaylistSection = () => {
             <p>Owner: {playlist.owner}</p>
           </li>
         ))}
-      </ul>
+      </ul>'UseQueryString':true
     </div>
   );
 };
