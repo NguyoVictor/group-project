@@ -3,10 +3,9 @@ import NavBar from '../components/NavBar'
 export default function Podcasts(){
     return(
         <div className='podcast'>
-              <NavBar/>
-            <Header/>
+            <Header/> <NavBar/>
             <h2>Podcasts</h2>
-         
+           
         </div>
     );
 }
