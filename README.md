@@ -17,10 +17,10 @@ This API provided access to a wide range of music-related data including tracks,
 - **Ability to play songs**: Allow users to play songs directly within the application.
  
 ## Basic User Story
-- As a user, I want to see a home page that gives me access to the search page, my library, my profile, and new music.
+- As a user, I want to see a home page that gives me access to the search page, my library, podcasts and new music.
 - As a user, I want to have a search page where I can search for a track, an artist, or an album.
-- As a user, I want to have a library page where I can see my liked songs and albums.
-- As a user, I want to see information about my profile on a separate page.
+- As a user, I want to have a library page where I can see my playlists.
+- As a user, I want to have a podcasts page where I can see podcasts.
 - As a user, I want to have a page where I can simply browse and discover new music.
 
   ## Expected Challenges
